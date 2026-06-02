@@ -1,0 +1,19 @@
+{
+	"KPlugin": {
+		"Authors": [
+			{
+				"Name": "Dustin"
+			}
+		],
+		"Category": "System Information",
+		"Description": "At-a-glance astrophotography forecast for your imaging sites. Combines Open-Meteo and 7Timer (both free, no API key) for cloud, transparency, seeing, moon, and per-site BB/NB/Neither verdicts.",
+		"Icon": "weather-clear-night",
+		"Id": "space.dustin.astrowidget",
+		"License": "GPL-3.0-or-later",
+		"Name": "astrowidget",
+		"Version": "0.1",
+		"Website": "https://github.com/dustinspace217/astrowidget-pub"
+	},
+	"X-Plasma-API-Minimum-Version": "6.0",
+	"KPackageStructure": "Plasma/Applet"
+}
