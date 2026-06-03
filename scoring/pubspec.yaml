@@ -1,8 +1,8 @@
 name: astrowidget_scoring
 description: >-
   Self-contained astrophotography scoring engine for astrowidget. The astronomy
-  + scoring + weather code under lib/ is VENDORED from the author's separate
-  astroplan project — astrowidget reuses the ideas and
+  + scoring + weather code under lib/ is VENDORED from the astroplan project
+  (github.com/dustinspace217/astroplan) — astrowidget reuses the ideas and
   methods but does NOT depend on astroplan at build or run time. This is a
   frozen copy; see VENDORED.md.
 publish_to: none
@@ -17,3 +17,5 @@ environment:
 dependencies:
   geoengine: ^1.0.6   # astronomy: sun/moon positions, rise/set/transit
   logger: ^2.7.0      # used by the vendored app_logger
+dev_dependencies:
+  test: ^1.25.0
