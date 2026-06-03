@@ -123,6 +123,7 @@ OPEN_METEO_HOURLY_VARS = ",".join([
 	# models omit pressure-level winds; merge_hourly reads it None-preserving so a
 	# missing hour is "no jet data" (skipped), never a calm-jet 0.
 	"wind_speed_250hPa",
+	"snow_depth",
 ])
 
 # Days of forecast to request from Open-Meteo. We score 3 nights (tonight +2),
@@ -746,6 +747,9 @@ def merge_hourly(
 	# means "no jet data → skip it in the blend", whereas 0.0 would mean a real
 	# dead-calm jet (a perfect-seeing signal). The two must never collapse.
 	jet250 = col("wind_speed_250hPa")
+	# Ground snow depth (m) — the Phase-1b snow-albedo input. _safe with a 0.0
+	# default is correct here (unlike the 250 hPa jet): absent snow = no snow.
+	snow = col("snow_depth")
 
 	out: list[dict[str, Any]] = []
 	for i in range(min_complete):
@@ -781,6 +785,7 @@ def merge_hourly(
 			# reads this nullable and the seeing blend SKIPS null hours; a 0.0 here
 			# would be scored as an ideal calm jet. See jet250/_safe_optional above.
 			"wind_speed_250hPa": _safe_optional(jet250, i),
+			"snow_depth": _safe(snow, i, 0.0),  # metres; 0 = no snow (Phase 1b)
 			# Seeing/transparency from 7Timer. None (not a fabricated default)
 			# when no matching hour exists — display shows "—" and the
 			# enrichment averaging skips it, rather than inventing a value.
