@@ -1,4 +1,7 @@
 # astrowidget
+**NOTE: I've secured permission from Astrospheric to publish the Astrospheric
+version of the widget, making this version redundant/dedprecated.**
+
 
 A KDE Plasma 6 widget for astrophotographers. At-a-glance go/no-go conditions
 for up to three imaging sites tonight (and the next two nights), with verdicts
